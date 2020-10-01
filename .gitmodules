@@ -13,3 +13,6 @@
 [submodule "seaweedfs/seaweedfs"]
 	path = seaweedfs/seaweedfs
 	url = https://github.com/chrislusf/seaweedfs
+[submodule "seaweedfs-docker-volume/seaweedfs-docker-volume/docker-plugin_seaweedfs"]
+	path = seaweedfs-docker-volume/seaweedfs-docker-volume/docker-plugin_seaweedfs
+	url = https://github.com/katharostech/docker-plugin_seaweedfs.git
