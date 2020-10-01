@@ -1,0 +1,4 @@
+node_modules
+rootfs
+node_modules/*
+rootfs/*
