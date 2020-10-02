@@ -16,3 +16,6 @@
 [submodule "seaweedfs-docker-volume/seaweedfs-docker-volume/docker-plugin_seaweedfs"]
 	path = seaweedfs-docker-volume/seaweedfs-docker-volume/docker-plugin_seaweedfs
 	url = https://github.com/katharostech/docker-plugin_seaweedfs.git
+[submodule "dockerd-exporter/dockerd-exporter"]
+	path = dockerd-exporter/dockerd-exporter
+	url = https://github.com/stefanprodan/dockerd-exporter.git
