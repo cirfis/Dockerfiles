@@ -19,3 +19,9 @@
 [submodule "dockerd-exporter/dockerd-exporter"]
 	path = dockerd-exporter/dockerd-exporter
 	url = https://github.com/stefanprodan/dockerd-exporter.git
+[submodule "nefarious/nefarious"]
+	path = nefarious/nefarious
+	url = https://github.com/lardbit/nefarious.git
+[submodule "promgen"]
+	path = promgen
+	url = https://github.com/line/promgen.git

@@ -1,0 +1,3 @@
+[submodule "nefarious"]
+	path = nefarious
+	url = https://github.com/lardbit/nefarious.git
