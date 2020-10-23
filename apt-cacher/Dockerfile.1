@@ -1,0 +1,26 @@
+# and then you can run containers with:
+#   docker run -t -i --rm -e http_proxy http://dockerhost:3142/ debian bash
+#
+# Here, `dockerhost` is the IP address or FQDN of a host running the Docker daemon
+# which acts as an APT proxy server.
+FROM        ubuntu:focal
+
+VOLUME  ["/var/cache/apt-cacher-ng"]
+COPY 	keepalived.conf /etc/keepalived/keepalived.conf
+
+RUN     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-cacher-ng keepalived iproute2 grep bash tcpdump sed ca-certificates wget \
+ && sed 's/# ForeGround: 0/ForeGround: 1/' -i /etc/apt-cacher-ng/acng.conf \
+ && sed 's/# PassThroughPattern:.*this would allow.*/PassThroughPattern: .* #/' -i /etc/apt-cacher-ng/acng.conf \
+ && rm -rf /var/lib/apt/lists/*
+
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+
+RUN chmod 777 /sbin/entrypoint.sh /var/cache/apt-cacher-ng
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD wget -q -t1 -O /dev/null  http://localhost:3142/acng-report.html || exit 1	
+
+EXPOSE  3142/tcp
+
+ENTRYPOINT ["/sbin/entrypoint.sh"]
