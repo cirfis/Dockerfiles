@@ -9,7 +9,7 @@ COPY	acng.conf /etc/apt-cacher-ng/acng.conf
 
 EXPOSE  9999/tcp
 
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+HEALTHCHECK --interval=1m --timeout=10s --retries=5 --start-period=90s \
     CMD wget -q -t1 -O /dev/null  http://localhost:9999/acng-report.html || exit 1
 
 CMD     mkdir -p /var/cache/apt-cacher-ng /run/apt-cacher-ng && chmod 777 /var/cache/apt-cacher-ng /run/apt-cacher-ng && start-stop-daemon --start --exec "$(command -v apt-cacher-ng)" -- -c /etc/apt-cacher-ng/ && tail -f /var/log/apt-cacher-ng/*
