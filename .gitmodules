@@ -28,3 +28,6 @@
 [submodule "observium/observium"]
 	path = observium/observium
 	url = https://gitlab.com/trithemius/observium.git
+[submodule "maltrail/maltrail"]
+	path = maltrail/maltrail
+	url = https://github.com/stamparm/maltrail
