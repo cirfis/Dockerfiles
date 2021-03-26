@@ -25,3 +25,6 @@
 [submodule "promgen"]
 	path = promgen
 	url = https://github.com/line/promgen.git
+[submodule "observium/observium"]
+	path = observium/observium
+	url = https://gitlab.com/trithemius/observium.git
