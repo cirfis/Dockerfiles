@@ -37,7 +37,9 @@ file_env() {
 TZ=${TZ:-UTC}
 MEMORY_LIMIT=${MEMORY_LIMIT:-512M}
 UPLOAD_MAX_SIZE=${UPLOAD_MAX_SIZE:-16M}
+CLEAR_ENV=${CLEAR_ENV:-yes}
 OPCACHE_MEM_SIZE=${OPCACHE_MEM_SIZE:-128}
+LISTEN_IPV6=${LISTEN_IPV6:-true}
 REAL_IP_FROM=${REAL_IP_FROM:-0.0.0.0/32}
 REAL_IP_HEADER=${REAL_IP_HEADER:-X-Forwarded-For}
 LOG_IP_VAR=${LOG_IP_VAR:-remote_addr}
@@ -66,6 +68,7 @@ echo ${TZ} > /etc/timezone
 echo "Setting PHP-FPM configuration..."
 sed -e "s/@MEMORY_LIMIT@/$MEMORY_LIMIT/g" \
   -e "s/@UPLOAD_MAX_SIZE@/$UPLOAD_MAX_SIZE/g" \
+  -e "s/@CLEAR_ENV@/$CLEAR_ENV/g" \
   /tpls/etc/php7/php-fpm.d/www.conf > /etc/php7/php-fpm.d/www.conf
 
 echo "Setting PHP INI configuration..."
@@ -85,6 +88,10 @@ sed -e "s#@UPLOAD_MAX_SIZE@#$UPLOAD_MAX_SIZE#g" \
   -e "s#@LOG_IP_VAR@#$LOG_IP_VAR#g" \
   /tpls/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
 
+if [ "$LISTEN_IPV6" != "true" ]; then
+  sed -e '/listen \[::\]:/d' -i /etc/nginx/nginx.conf
+fi
+
 echo "Initializing files and folders..."
 mkdir -p /data/assets /data/extensions/.cache /data/storage
 touch /data/extensions/list
@@ -98,8 +105,8 @@ chown -h flarum. /opt/flarum/extensions /opt/flarum/public/assets /opt/flarum/st
 fixperms /data/assets /data/extensions /data/storage /opt/flarum/vendor
 
 echo "Checking parameters..."
-if [ -z "$FLARUM_ADMIN_PASSWORD" ]; then
-  >&2 echo "ERROR: FLARUM_ADMIN_PASSWORD must be defined"
+if [ -z "$FLARUM_BASE_URL" ]; then
+  >&2 echo "ERROR: FLARUM_BASE_URL must be defined"
   exit 1
 fi
 
@@ -130,7 +137,7 @@ echo "Database ready!"
 
 if [ ! -f /data/assets/rev-manifest.json ]; then
   echo "First install detected..."
-su-exec flarum:flarum cat > /tmp/config.yml <<EOL
+yasu flarum:flarum cat > /tmp/config.yml <<EOL
 debug: ${FLARUM_DEBUG}
 baseUrl: ${FLARUM_BASE_URL}
 databaseConfiguration:
@@ -149,7 +156,8 @@ adminUser:
 settings:
   forum_title: ${FLARUM_FORUM_TITLE}
 EOL
-  su-exec flarum:flarum php flarum install --file=/tmp/config.yml
+  yasu flarum:flarum php flarum install --file=/tmp/config.yml
+  yasu flarum:flarum touch /data/assets/rev-manifest.json
   echo ">>"
 #  echo ">> WARNING: Flarum has been installed with the default credentials (cirfis/cirfis)"
   echo ">> Please connect to ${FLARUM_BASE_URL}"
@@ -157,7 +165,7 @@ EOL
 fi
 
 echo "Creating Flarum config file..."
-su-exec flarum:flarum cat > /opt/flarum/config.php <<EOL
+yasu flarum:flarum cat > /opt/flarum/config.php <<EOL
 <?php return array (
   'debug' => ${FLARUM_DEBUG},
   'database' =>
@@ -190,8 +198,8 @@ if [ -s "/data/extensions/list" ]; then
     extensions="${extensions}${extension} "
   done < /data/extensions/list
   echo "Installing additional extensions..."
-  COMPOSER_CACHE_DIR="/data/extensions/.cache" su-exec flarum:flarum composer require --working-dir /opt/flarum ${extensions}
+  COMPOSER_CACHE_DIR="/data/extensions/.cache" yasu flarum:flarum composer require --working-dir /opt/flarum ${extensions}
 fi
 
-su-exec flarum:flarum php flarum migrate
-su-exec flarum:flarum php flarum cache:clear
+yasu flarum:flarum php flarum migrate
+yasu flarum:flarum php flarum cache:clear

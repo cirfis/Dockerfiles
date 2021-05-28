@@ -37,3 +37,6 @@
 [submodule "hawk/docker-hawk"]
 	path = hawk/docker-hawk
 	url = https://github.com/krig/docker-hawk.git
+[submodule "flarum/docker-flarum"]
+	path = flarum/docker-flarum
+	url = https://github.com/crazy-max/docker-flarum
