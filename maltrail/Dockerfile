@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 RUN apt-get update \ 
     && apt-get upgrade -y \
-    && apt-get install -y python python3-pcapy git curl schedtool cron procps \
+    && apt-get install -y python python-pcapy git curl schedtool cron procps \
     && git clone --depth=1 https://github.com/stamparm/maltrail.git /opt/maltrail \
     && python /opt/maltrail/core/update.py
 

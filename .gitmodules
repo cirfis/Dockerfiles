@@ -31,3 +31,9 @@
 [submodule "maltrail/maltrail"]
 	path = maltrail/maltrail
 	url = https://github.com/stamparm/maltrail
+[submodule "elasticsearch-swarm/docker-swarm-elasticsearch"]
+	path = elasticsearch-swarm/docker-swarm-elasticsearch
+	url = https://github.com/imyoungyang/docker-swarm-elasticsearch
+[submodule "hawk/docker-hawk"]
+	path = hawk/docker-hawk
+	url = https://github.com/krig/docker-hawk.git
