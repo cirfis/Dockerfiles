@@ -40,3 +40,6 @@
 [submodule "flarum/docker-flarum"]
 	path = flarum/docker-flarum
 	url = https://github.com/crazy-max/docker-flarum
+[submodule "bitlbee/docker-bitlbee-libpurple"]
+	path = bitlbee/docker-bitlbee-libpurple
+	url = https://github.com/ezkrg/docker-bitlbee-libpurple
