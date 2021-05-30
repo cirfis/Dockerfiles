@@ -43,3 +43,6 @@
 [submodule "bitlbee/docker-bitlbee-libpurple"]
 	path = bitlbee/docker-bitlbee-libpurple
 	url = https://github.com/ezkrg/docker-bitlbee-libpurple
+[submodule "mqttdash/mqtt-admin"]
+	path = mqttdash/mqtt-admin
+	url = https://github.com/dersimn/mqtt-admin.git

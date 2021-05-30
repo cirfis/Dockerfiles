@@ -1,2 +1,2 @@
-websocketserver = rabbitmq.cirfis.org;
-websocketport = 443;
+websocketserver = rabbitmq1;
+websocketport = 9001;
