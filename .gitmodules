@@ -46,3 +46,6 @@
 [submodule "mqttdash/mqtt-admin"]
 	path = mqttdash/mqtt-admin
 	url = https://github.com/dersimn/mqtt-admin.git
+[submodule "halcyon/halcyon"]
+	path = halcyon/halcyon
+	url = https://notabug.org/halcyon-suite/halcyon.git
