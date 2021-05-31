@@ -49,3 +49,6 @@
 [submodule "halcyon/halcyon"]
 	path = halcyon/halcyon
 	url = https://notabug.org/halcyon-suite/halcyon.git
+[submodule "pinafore/pinafore"]
+	path = pinafore/pinafore
+	url = https://github.com/nolanlawson/pinafore
