@@ -5,12 +5,13 @@ FROM node:alpine
 # Pushing all files into image
 WORKDIR /app
 RUN apk add --no-cache git \
-    && git clone https://github.com/nolanlawson/pinafore /app
+    && git clone https://github.com/nolanlawson/pinafore /app \
+    && git checkout $(git tag -l | sort -Vr | head -n 1)
 
 # Install Pinafore
-RUN yarn --production --pure-lockfile && \
-    yarn build && \
-    yarn cache clean && \
+RUN yarn --production --pure-lockfile
+RUN yarn build
+RUN yarn cache clean && \
     rm -rf ./src ./docs ./tests ./bin
 
 # Expose port 4002
