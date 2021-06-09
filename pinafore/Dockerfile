@@ -13,9 +13,6 @@ RUN yarn --production --pure-lockfile \
     && yarn build || true
 
 # Pushing all files into image
-#COPY node_modules	/app/node_modules
-#COPY static		/app/static
-#COPY webpack		/app/webpack
 COPY __sapper__		/app/__sapper__
 
 RUN     yarn cache clean \
