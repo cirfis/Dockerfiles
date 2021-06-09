@@ -52,3 +52,15 @@
 [submodule "pinafore/pinafore"]
 	path = pinafore/pinafore
 	url = https://github.com/nolanlawson/pinafore
+[submodule "ivatar/ivatar"]
+	path = ivatar/ivatar
+	url = https://git.linux-kernel.at/oliver/ivatar.git
+[submodule "rtorrentfloodvpn/rtorrent-flood"]
+	path = rtorrentfloodvpn/rtorrent-flood
+	url = https://github.com/lu6fer/rtorrent-flood.git
+[submodule "rtorrentfloodvpn/arch-rtorrentvpn"]
+	path = rtorrentfloodvpn/arch-rtorrentvpn
+	url = https://github.com/binhex/arch-rtorrentvpn.git
+[submodule "smokeping.broken/docker-smokeping"]
+	path = smokeping.broken/docker-smokeping
+	url = https://github.com/linuxserver/docker-smokeping.git

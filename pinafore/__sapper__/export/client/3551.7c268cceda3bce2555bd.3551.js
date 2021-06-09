@@ -1,0 +1,2 @@
+(this.webpackChunkpinafore=this.webpackChunkpinafore||[]).push([[3551],{3551:(e,o,a)=>{"use strict";a.r(o),a.d(o,{default:()=>i});var r=a(7193),n=a(1062),t=a(1158),h=a.n(t);const{origin:c}=location,i=()=>h()({workerPath:`${c}/${n.Z}`,langPath:`${c}/`,corePath:`${c}/${r.Z}`,cacheMethod:"none",workerBlobURL:!1,logger:e=>{}})}}]);
+//# sourceMappingURL=3551.7c268cceda3bce2555bd.3551.js.map
