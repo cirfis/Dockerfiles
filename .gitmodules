@@ -67,3 +67,6 @@
 [submodule "betanin/betanin"]
 	path = betanin/betanin
 	url = https://github.com/sentriz/betanin.git
+[submodule "hivemq"]
+	path = hivemq
+	url = https://github.com/cirfis/docker-hivemq
