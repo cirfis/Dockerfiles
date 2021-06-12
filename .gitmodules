@@ -64,3 +64,6 @@
 [submodule "smokeping.broken/docker-smokeping"]
 	path = smokeping.broken/docker-smokeping
 	url = https://github.com/linuxserver/docker-smokeping.git
+[submodule "betanin/betanin"]
+	path = betanin/betanin
+	url = https://github.com/sentriz/betanin.git
