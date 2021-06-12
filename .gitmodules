@@ -70,3 +70,42 @@
 [submodule "hivemq"]
 	path = hivemq
 	url = https://github.com/cirfis/docker-hivemq
+[submodule "bitlbee"]
+	path = bitlbee
+	url = https://github.com/cirfis/docker-bitlbee
+[submodule "betanin"]
+	path = betanin
+	url = https://github.com/cirfis/docker-betanin
+[submodule "dockerd-exporter"]
+	path = dockerd-exporter
+	url = https://github.com/cirfis/docker-dockerd_exporter
+[submodule "elasticsearch-swarm"]
+	path = elasticsearch-swarm
+	url = https://github.com/cirfis/docker-elasticsearch_swarm
+[submodule "flarum"]
+	path = flarum
+	url = https://github.com/cirfis/docker-flarum
+[submodule "halcyon"]
+	path = halcyon
+	url = https://github.com/cirfis/docker-halcyon
+[submodule "gotify"]
+	path = gotify
+	url = https://github.com/cirfis/docker-gotify
+[submodule "gotify_bridge"]
+	path = gotify_bridge
+	url = https://github.com/cirfis/docker-gotify_bridge
+[submodule "karma"]
+	path = karma
+	url = https://github.com/cirfis/docker-karma
+[submodule "observium"]
+	path = observium
+	url = https://github.com/cirfis/docker-observium
+[submodule "pinafore"]
+	path = pinafore
+	url = https://github.com/cirfis/docker-pinafore
+[submodule "tania"]
+	path = tania
+	url = https://github.com/cirfis/docker-tania
+[submodule "hrconvert2"]
+	path = hrconvert2
+	url = https://github.com/cirfis/docker-hrconvert2
