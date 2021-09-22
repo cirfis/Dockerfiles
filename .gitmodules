@@ -109,3 +109,6 @@
 [submodule "pinafore/pinafore"]
 	path = pinafore/pinafore
 	url = https://github.com/nolanlawson/pinafore
+[submodule "souin/souin"]
+	path = souin/souin
+	url = https://github.com/souin/souin

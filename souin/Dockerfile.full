@@ -1,0 +1,37 @@
+FROM golang:alpine AS builder
+
+ENV VERSION_TAG full-version
+
+ENV GOPATH /app
+ENV GOOS linux
+
+RUN apk add --no-cache bash git openssh gcc libc-dev \
+    && mkdir -p /app/src/github.com/darkweak/cmd \
+    && git clone https://github.com/darkweak/souin.git /app/src/github.com/darkweak/souin  
+
+WORKDIR /app/src/github.com/darkweak/souin
+
+RUN git checkout $VERSION_TAG \
+    && go mod download \
+    && CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w -extldflags "-static"' -o /app/cmd/souin ./plugins/souin
+
+
+###############################
+FROM alpine:latest AS souin
+
+WORKDIR /
+
+RUN mkdir -p /ssl /configuration /default
+
+COPY --from=builder /app/cmd/souin /sbin/ 
+COPY --from=builder /app/src/github.com/darkweak/souin/configuration .
+COPY --from=builder /app/src/github.com/darkweak/souin/default .
+
+
+RUN mv *.yml /configuration/
+RUN mv server.* default/
+RUN chmod +x /sbin/souin
+
+EXPOSE 80
+
+CMD ["souin"]
