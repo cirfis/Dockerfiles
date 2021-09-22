@@ -64,7 +64,7 @@ pacman -U http://mirror.archlinuxarm.org/aarch64/core/pacman-6.0.0-3-aarch64.pkg
 else
 pacman -U https://mirror.f4st.host/archlinux/core/os/x86_64/pacman-6.0.0-3-x86_64.pkg.tar.zst --noconfirm 
 fi
-rm /etc/pacman.conf /etc/pacman.conf.pacnew || true && mv -v /root/pacman.6.conf /etc/pacman.conf 
+rm /etc/pacman.conf /etc/pacman.conf.pacnew && mv -v /root/pacman.6.conf /etc/pacman.conf 
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
