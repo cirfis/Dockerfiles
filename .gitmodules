@@ -112,3 +112,6 @@
 [submodule "souin/souin"]
 	path = souin/souin
 	url = https://github.com/souin/souin
+[submodule "kocaptcha/kocaptcha"]
+	path = kocaptcha/kocaptcha
+	url = https://github.com/koto-bank/kocaptcha
