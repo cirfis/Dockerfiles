@@ -5,13 +5,13 @@ RUN apk add --no-cache rust cargo fontconfig-dev freetype-dev cmake make pkgconf
 
 WORKDIR /kocaptcha
 
-RUN cargo build --release
+RUN     cargo build --release
 
 FROM alpine:latest
 
 COPY --from=build /kocaptcha/target/release/kocaptcha /kocaptcha/kocaptcha
 
-RUN apk add --no-cache fontconfig freetype libgcc font-overpass
+RUN apk add --no-cache fontconfig freetype libgcc font-overpass ttf-ubuntu-font-family
 
 WORKDIR /kocaptcha
 
