@@ -115,3 +115,6 @@
 [submodule "kocaptcha/kocaptcha"]
 	path = kocaptcha/kocaptcha
 	url = https://github.com/koto-bank/kocaptcha
+[submodule "linx/linx-server"]
+	path = linx/linx-server
+	url = https://github.com/ZizzyDizzyMC/linx-server
